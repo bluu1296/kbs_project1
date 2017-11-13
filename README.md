@@ -1,2 +1,6 @@
-# kbs_project1
-KBS voor project periode 1
+# KBS project
+KBS voor periode 1.
+
+Opdrachtgever: Jamshed Bawar
+
+Opdracht: Een website met CMS en een agenda systeem.
