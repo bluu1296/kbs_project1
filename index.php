@@ -8,7 +8,6 @@
         <h1>Werkt dit?</h1>
         
         <h2>Hallo?</h2>	
-		
-		
+
     </body>
 </html>
