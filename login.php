@@ -12,13 +12,10 @@
 </html>
 <?php
 //verbinden met de database
-$db = "mysql:host=localhost; dbname=kbs1; port=3306";
-$user = "root";
-$pass = "";
-$pdo = new PDO($db, $user, $pass);
-
+include 'DB-connectie.php';
+//wachtwoord controleren
 $stmt_wachtwoord = $pdo->prepare("select 'password' from 'gebruiker' where 'email' = emaillogin)
-            VALUES  (:emaillogin)");
+            VALUES  (:emaillogin)"); //gegevens uit DB halen
             $stmt->bindParam(':emaillogin', $_POST["email"]);
 $stmt->execute();
 if(password_verify($_POST["wachtwoord"], $stmt_wachtwoord) == TRUE){
@@ -27,5 +24,4 @@ if(password_verify($_POST["wachtwoord"], $stmt_wachtwoord) == TRUE){
 else{
     print("De combinatie van E-mail en wachtwoord is niet gevonden");
 }
-password_ver
 ?>
