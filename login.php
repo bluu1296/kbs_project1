@@ -13,15 +13,19 @@
 <?php
 //verbinden met de database
 include 'DB-connectie.php';
-//wachtwoord controleren
+//wachtwoord controleren\
+$email = $filter_input(POST, email);
+$wachtwoord = $filter_input(POST, password);
 $stmt_wachtwoord = $pdo->prepare("select 'password' from 'gebruiker' where 'email' = emaillogin)
             VALUES  (:emaillogin)"); //gegevens uit DB halen
-            $stmt->bindParam(':emaillogin', $_POST["email"]);
+            $stmt->bindParam(':emaillogin', $email);
 $stmt->execute();
-if(password_verify($_POST["wachtwoord"], $stmt_wachtwoord) == TRUE){
-    session_start($_POST["email"]);
+if(password_verify($wachtwoord, $stmt_wachtwoord) == TRUE){
+    session_start($email);
+    echo "<script> window.location.assign('index.php'); </script>";
 }
 else{
     print("De combinatie van E-mail en wachtwoord is niet gevonden");
 }
+
 ?>
