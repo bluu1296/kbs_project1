@@ -13,6 +13,7 @@ $config = array(
     "paths" => array(
         "resources" => "/resources",
 		"style" => "public_html/css/style.css",
+                "image" => "public_html/img",
 		"bootstrap" => "public_html/js/bootstrap.js",
         "images" => $_SERVER["DOCUMENT_ROOT"] . "/img/",
         

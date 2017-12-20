@@ -22,8 +22,8 @@
 					<div class="item active">
 						<img src="public_html/img/placeholder.png" alt="Chania" width="100%" height="460">
 						<div class="carousel-caption">
-							<h3>Homo</h3>
-							<p>Homos.</p>
+							<h3>Test</h3>
+							<p>test test.</p>
 						</div>
 					</div>
 

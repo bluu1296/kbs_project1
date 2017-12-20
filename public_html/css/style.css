@@ -41,3 +41,16 @@ html, body {
 	height: 500px;
 	width: 100%;
 }
+.vakken {
+    padding-top: 80px;
+}
+
+.contact{
+    padding-top: 80px;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+.form-control{
+    width: 250%;
+}
