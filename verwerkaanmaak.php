@@ -6,13 +6,18 @@ include 'DB-connectie.php';
 $email = filter_input(INPUT_POST, "E-mail"); //filtert dingen er uit maakt het veiliger
 //$geboortedatum = filter_input(INPUT_POST, "geboortedatum");
 $tel = filter_input(INPUT_POST, "telefoonnummer");
-$adres = filter_input(INPUT_POST, "adres");
+$straatnaam = filter_input(INPUT_POST, "straatnaam");
 $postcode = filter_input(INPUT_POST, "postcode");
 $voornaam = filter_input(INPUT_POST, "voornaam");
 $achternaam = filter_input(INPUT_POST, "achternaam");
 $wachtwoord = filter_input(INPUT_POST, "wachtwoord");
 $herhaalwachtwoord = filter_input(INPUT_POST, "wachtwoord_herhalen");
+$huisnummer = filter_input(INPUT_POST, "huisnummer");
+$toevoeging = filter_input(INPUT_POST, "toevoeging");
+$plaatsnaam = filter_input(INPUT_POST, "plaatsnaam");
 
+// standaard rol
+$defaultRol = '0';
 //wachtwoord en herhaalwachtwoord controleren als klopt wachtwoord hashen.
 if ($wachtwoord === $herhaalwachtwoord) {
     $password_hash = password_hash($wachtwoord, PASSWORD_BCRYPT);
@@ -27,22 +32,33 @@ if($email == $emailcheck){
 }
 //push to DB
 try{ //'try' zodat er foutmelding gegeven wordt als het niet lukt met de catch
-$registreer = $pdo->prepare("START TRANSACTION INSERT INTO gebruiker(telefoonnummer, adres, voornaam, achternaam, postcode)
-        VALUES   (telefoonnummer, adres, voornaam, achternaam, postcode) INSERT INTO inlog (email, wachtwoord) VALUES (email, wachtwoord) commit"); //SQL Querry gebruik makent van een transactie zodat data pas opgeslagen wordt als de hele querry uitgevoerd is.
-        $registreer->bindValue('email', $email); //email
-        $registreer->bindValue('wachtwoord', $password_hash); //hashed password
-        $registreer->bindValue('telefoonnummer', $tel); //telefoonnummer
-        $registreer->bindValue('adres', $adres); //adres
-        $registreer->bindValue('voornaam', $achternaam); //achternaam
-        $registreer->bindValue('achternaam', $achternaam); //voornaam
-        $registreer->bindValue('postcode', $postcode); //postcode
-$registreer->execute(); //execute order 66
-    }
+$transStart = $pdo->prepare("START TRANSACTION"); //start transactie
+
+$registreerA = $pdo->prepare("INSERT INTO `gebruiker` (`voornaam`, `achternaam`, `email`, `telefoonnummer`, `wachtwoord`, `actief`, `rol`) 
+    VALUES ('" . $voornaam . "', '" . $achternaam . "', '" . $email . "', '" . $tel . "', '" . $password_hash . "', '1', '1')"); //SQL Querry gebruik makent van een transactie zodat data pas opgeslagen wordt als de hele querry uitgevoerd is.
+
+
     
+$registreerB = $pdo->prepare("INSERT INTO `adres` (`email`, `straatnaam`, `huisnummer`, `plaatsnaam`, `postcode`, `toevoeging`)
+       VALUES ('" . $email . "', '" . $straatnaam . "', '" . $huisnummer . "', '" . $plaatsnaam . "', '" . $postcode . "', '" . $toevoeging . "')");
+
+$transRolback = $pdo->prepare("ROLLBACK");
+$TransCommit = $pdo->prepare("COMMIT"); //voorbereiden transactie
+$transStart->execute(); //start transactie
+$registreerA->execute();//start querry A
+$registreerB->execute();//start querry B
+$TransCommit->execute();//beindig transactie
+//$registreer = $pdo->prepare("START TRANSACTION; INSERT INTO 'gebruiker' ('voornaam', 'achternaam', 'email', 'telefoonnummer', 'wachtwoord', 'actief', 'rol')
+//        VALUES ('" . $voornaam . "', '" . $achternaam . "', '" . $email . "', '" . $tel . "', '" . $password_hash . "' 'TRUE', '1'); 
+//        INSERT INTO 'adres' ('email', 'straatnaam', 'huisnummer', 'plaatsnaam', 'postcode', 'toevoeging')
+//        VALUES ('" . $email . "', '" . $straatnaam . "', '" . $huisnummer . "', '" . $plaatsnaam . "', '" . $postcode . "', '" . $toevoeging . "');
+//        COMMIT; ");
+}
  catch(PDOException $e) //foutmelding als iets niet werkt
  {
     print("Fout:" . $e->getMessage());
-    
+   $transRolback->execute(); //rollback uitvoeren
  }
- header("Location: index.php")
+ //var_dump($registreerB);
+header("Location: index.php")
 ?>
