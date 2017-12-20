@@ -17,7 +17,7 @@ $toevoeging = filter_input(INPUT_POST, "toevoeging");
 $plaatsnaam = filter_input(INPUT_POST, "plaatsnaam");
 
 // standaard rol
-$defaultRol = '0';
+$standaardRol = '0';
 //wachtwoord en herhaalwachtwoord controleren als klopt wachtwoord hashen.
 if ($wachtwoord === $herhaalwachtwoord) {
     $password_hash = password_hash($wachtwoord, PASSWORD_BCRYPT);
@@ -35,7 +35,7 @@ try{ //'try' zodat er foutmelding gegeven wordt als het niet lukt met de catch
 $transStart = $pdo->prepare("START TRANSACTION"); //start transactie
 
 $registreerA = $pdo->prepare("INSERT INTO `gebruiker` (`voornaam`, `achternaam`, `email`, `telefoonnummer`, `wachtwoord`, `actief`, `rol`) 
-    VALUES ('" . $voornaam . "', '" . $achternaam . "', '" . $email . "', '" . $tel . "', '" . $password_hash . "', '1', '1')"); //SQL Querry gebruik makent van een transactie zodat data pas opgeslagen wordt als de hele querry uitgevoerd is.
+    VALUES ('" . $voornaam . "', '" . $achternaam . "', '" . $email . "', '" . $tel . "', '" . $password_hash . "', '1', '". $standaardRol . "')"); //SQL Querry gebruik makent van een transactie zodat data pas opgeslagen wordt als de hele querry uitgevoerd is.
 
 
     
@@ -48,11 +48,7 @@ $transStart->execute(); //start transactie
 $registreerA->execute();//start querry A
 $registreerB->execute();//start querry B
 $TransCommit->execute();//beindig transactie
-//$registreer = $pdo->prepare("START TRANSACTION; INSERT INTO 'gebruiker' ('voornaam', 'achternaam', 'email', 'telefoonnummer', 'wachtwoord', 'actief', 'rol')
-//        VALUES ('" . $voornaam . "', '" . $achternaam . "', '" . $email . "', '" . $tel . "', '" . $password_hash . "' 'TRUE', '1'); 
-//        INSERT INTO 'adres' ('email', 'straatnaam', 'huisnummer', 'plaatsnaam', 'postcode', 'toevoeging')
-//        VALUES ('" . $email . "', '" . $straatnaam . "', '" . $huisnummer . "', '" . $plaatsnaam . "', '" . $postcode . "', '" . $toevoeging . "');
-//        COMMIT; ");
+
 }
  catch(PDOException $e) //foutmelding als iets niet werkt
  {
@@ -60,5 +56,5 @@ $TransCommit->execute();//beindig transactie
    $transRolback->execute(); //rollback uitvoeren
  }
  //var_dump($registreerB);
-header("Location: index.php")
+header("Location: index.php");
 ?>
