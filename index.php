@@ -9,8 +9,10 @@ require_once TEMPLATES_PATH . '/header.php';
 
 
 
-include 'pages/home.php';
+//include 'pages/home.php';
+//include 'pages/vakken.php';
 //include 'pages/contact.php';
+include 'pages/tarieven.php;';
 
 
 require_once TEMPLATES_PATH . '/footer.php';
