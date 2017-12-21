@@ -18,14 +18,35 @@ $plaatsnaam = filter_input(INPUT_POST, "plaatsnaam");
 
 // standaard rol
 $standaardRol = '0';
+//wachtoord validatie op hoofdletter cijfer speciaal teken en minimaal 8 letters.
+if(strlen($wachtwoord) < '8') {
+    $wachtwoordError = "Zorg dat uw wachtwoord minstens 8 tekens bevat.";
+    exit($wachtwoordError);
+} elseif(!preg_match("#[0-9]+#", $wachtwoord)) {
+    $wachtwoordError = "Zorg dat uw wachtwoord minstens één cijfer bevat.";
+    exit($wachtwoordError);
+} elseif(!preg_match("#[A-Z]+#", $wachtwoord)) {
+    $wachtwoordError = "Zorg dat uw wachtwoord minstens één hoofdletter bevat";
+    exit($wachtwoordError);
+}elseif(!preg_match("#[a-z]+#", $wachtwoord)) {
+    $wachtwoordError = "Zorg dat uw wachtwoord minstens één kleine letter bevat"; 
+    exit($wachtwoordError);
+}elseif(!preg_match("#[\W]+#", $wachtwoord)) {
+    $wachtwoordError = "Zorg dat uw wachtwoord minstens één speciaal teken bevat";
+    exit($wachtwoordError);
+}
+ elseif ($wachtwoord !== $herhaalwachtwoord) {
+    $wachtwoordError = "Zorg dat u twee keer het zelfde wachtwoord invoert.";
+    exit($wachtwoordError);
+} else {
+    $wachtwoordError = "Uw wachtwoord is goed!";
+}
 //wachtwoord en herhaalwachtwoord controleren als klopt wachtwoord hashen.
 if ($wachtwoord === $herhaalwachtwoord) {
     $password_hash = password_hash($wachtwoord, PASSWORD_BCRYPT);
-} else {
-    print("Zorg dat u twee keer het zelfde wachtwoord invoerd."); //foutmelding als wachtwoorden niet gelijk zijn
 }
 //check of account al bestaat
-$emailcheck = $pdo->prepare("select from 'gebruiker', 'email'");
+$emailcheck = $pdo->prepare("select from `gebruiker`, `email`");
 $emailcheck->execute();
 if($email == $emailcheck){
     print("Dit account bestaat al");
@@ -55,6 +76,9 @@ $TransCommit->execute();//beindig transactie
     print("Fout:" . $e->getMessage());
    $transRolback->execute(); //rollback uitvoeren
  }
- //var_dump($registreerB);
-header("Location: index.php");
+// print($wachtwoord);
+// print($herhaalwachtwoord);
+// print($wachtwoordError);
+//var_dump($registreerB);
+//header("Location: index.php");
 ?>
