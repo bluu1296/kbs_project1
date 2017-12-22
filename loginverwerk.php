@@ -12,9 +12,9 @@ try {
 //$query = new Querier();
     $resultaat = $pdo->prepare('SELECT wachtwoord FROM gebruiker WHERE email="' . $email . '"');
     $resultaat->execute();
-    $block = $pdo->prepare('SELECT actief FROM gebruiker WHERE email="' . $email . '"');
-    $block->execute();
-if ($block == 0){
+    $actief = $pdo->prepare('SELECT actief FROM gebruiker WHERE email="' . $email . '"');
+    $actief->execute();
+if ($actief == 0){
       exit("Uw account is nog niet geactiveerd door de beheerder. Bij vragen neem contact op met 'email'");
 }
 } catch (PDOException $e) { //foutmelding als iets niet werkt
@@ -35,45 +35,3 @@ if (password_verify($wachtwoord, $wachtwoordverify[0]) == TRUE) { //verifieerd w
     //print("gefaald");
     header("Location: login.php");
 }
-//class Querier
-//{
-//    protected $host = "localhost";
-//    protected $dbname = "mydb";
-//    protected $user = "root";
-//    protected $pass = "";
-//    public $id;
-//    public $name;
-//    public $description;
-//    public $DBH;
-//
-//    function __construct()
-//    {
-//
-//        try {
-//            $this->DBH = new PDO("mysql:host=$this->host;dbname=$this->dbname", $this->user, $this->pass);
-//
-//        } catch (PDOException $e) {
-//
-//            echo $e->getMessage();
-//        }
-//    }
-//
-//    function GET($Query)
-//    {
-//        try {
-//
-//            $query = $this->DBH->prepare($Query);
-//            $query->execute();
-//
-//            return $query->fetchAll(PDO::FETCH_ASSOC);
-//        } catch (PDOException $e) {
-//            return $e->getMessage();
-//        }
-//    }
-//
-//    public function closeConnection()
-//    {
-//
-//        $this->DBH = null;
-//    }
-//}
