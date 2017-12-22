@@ -2,7 +2,6 @@
 
 require_once 'config.php';
 
-
 include 'resources/library/router.php';
 include 'controller/homeController.php';
 include 'controller/vakController.php';
