@@ -59,16 +59,17 @@ class Registreer {
 		} else {
 			$wachtwoordError = "Uw wachtwoord is goed!";
 		}
-		//wachtwoord en herhaalwachtwoord controleren als klopt wachtwoord hashen.
+//		wachtwoord en herhaalwachtwoord controleren als klopt wachtwoord hashen.
 		if ($wachtwoord === $herhaalwachtwoord) {
 			$password_hash = password_hash($wachtwoord, PASSWORD_BCRYPT);
 		}
 		//check of account al bestaat
-		$emailcheck = $pdo->prepare("select from `gebruiker`, `email`");
+		$emailcheck = $pdo->prepare("select email from `gebruiker`");
 		$emailcheck->execute();
 		if($email == $emailcheck){
-			print("Dit account bestaat al");
+			exit("Dit account bestaat al");
 		}
+                echo 'homos';
 		//push to DB
 		try{ //'try' zodat er foutmelding gegeven wordt als het niet lukt met de catch
 			$transStart = $pdo->prepare("START TRANSACTION"); //start transactie
