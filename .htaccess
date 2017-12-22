@@ -1,7 +1,6 @@
-# Enable Rewriting
-RewriteEngine on
- 
-# Rewrite user URLs
-#   Input:  user/NAME/
-#   Output: user.php?id=NAME
-RewriteRule ^user/(\w+)/?$ user.php?id=$1
+RewriteEngine On
+RewriteBase /kbs_Project1/
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+RewriteRule ^(.+)$ index.php?uri=$1 [QSA,L]

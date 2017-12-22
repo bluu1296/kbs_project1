@@ -19,11 +19,11 @@
 				  <a class="navbar-brand" href="index.php">De BijlesGuru</a>
 			  </div>
 				<ul class="nav navbar-nav navbar-right">
-					<li class="active"><a href="index.php">Home</a></li>
-					<li><a href="?page=vak">Vakken</a></li>
-					<li><a href="/homo">Afspraak maken</a></li>
-					<li><a href="">Contact</a></li>
-					<a href=""> <button class="btn btn-success inlog">Inloggen</button></a>
+					<li class=""><a href="index.php">Home</a></li>
+					<li class=""><a href="vak">Vakken</a></li>
+					<li class=""><a href="afspraak">Afspraak maken</a></li>
+					<li class=""><a href="contact">Contact</a></li>
+					<a href="login"> <button class="btn btn-success inlog">Inloggen</button></a>
 					
 				</ul>
 				
