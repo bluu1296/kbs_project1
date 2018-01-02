@@ -69,17 +69,17 @@ class Registreer {
 		if($email == $emailcheck){
 			exit("Dit account bestaat al");
 		}
-                echo 'homos';
+                echo 'test';
 		//push to DB
 		try{ //'try' zodat er foutmelding gegeven wordt als het niet lukt met de catch
-			$transStart = $pdo->prepare("START TRANSACTION"); //start transactie
+			$transStart = $pdo->prepare("START TRANSACTION"); //SQL Querry gebruik makent van een transactie zodat data pas opgeslagen wordt als de hele querry uitgevoerd is.
 			$registreerA = $pdo->prepare("INSERT INTO `gebruiker` (`voornaam`, `achternaam`, `email`, `telefoonnummer`, `wachtwoord`, `actief`, `rol`) 
-				VALUES ('" . $voornaam . "', '" . $achternaam . "', '" . $email . "', '" . $tel . "', '" . $password_hash . "', '1', '". $standaardRol . "')"); //SQL Querry gebruik makent van een transactie zodat data pas opgeslagen wordt als de hele querry uitgevoerd is.
+				VALUES ('" . $voornaam . "', '" . $achternaam . "', '" . $email . "', '" . $tel . "', '" . $password_hash . "', '0', '". $standaardRol . "')"); //querry voor insert in tabel gebruiker
 
 			$registreerB = $pdo->prepare("INSERT INTO `adres` (`email`, `straatnaam`, `huisnummer`, `plaatsnaam`, `postcode`, `toevoeging`)
-				   VALUES ('" . $email . "', '" . $straatnaam . "', '" . $huisnummer . "', '" . $plaatsnaam . "', '" . $postcode . "', '" . $toevoeging . "')");
-			$transRolback = $pdo->prepare("ROLLBACK");
-			$TransCommit = $pdo->prepare("COMMIT"); //voorbereiden transactie
+				   VALUES ('" . $email . "', '" . $straatnaam . "', '" . $huisnummer . "', '" . $plaatsnaam . "', '" . $postcode . "', '" . $toevoeging . "')"); //querry voor insert in tabel adres
+			$transRolBack = $pdo->prepare("ROLLBACK"); //als er iets mis gaat in de transactie worden wijziging in die transactie uitgevoerd op de BD teruggedraaid
+			$TransCommit = $pdo->prepare("COMMIT"); //blijvend opslaan van data in DB
 			$transStart->execute(); //start transactie
 			$registreerA->execute();//start querry A
 			$registreerB->execute();//start querry B
@@ -91,7 +91,7 @@ class Registreer {
 		 catch(PDOException $e) //foutmelding als iets niet werkt
 		 {
 			print("Fout:" . $e->getMessage());
-		   $transRolback->execute(); //rollback uitvoeren
+		   $transRolBack->execute(); //rollback uitvoeren
 		 }
 	}
 }
