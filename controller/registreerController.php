@@ -78,7 +78,7 @@ class Registreer {
 
 			$registreerB = $pdo->prepare("INSERT INTO `adres` (`email`, `straatnaam`, `huisnummer`, `plaatsnaam`, `postcode`, `toevoeging`)
 				   VALUES ('" . $email . "', '" . $straatnaam . "', '" . $huisnummer . "', '" . $plaatsnaam . "', '" . $postcode . "', '" . $toevoeging . "')"); //querry voor insert in tabel adres
-			$transRolBack = $pdo->prepare("ROLLBACK"); //als er iets mis gaat in de transactie worden wijziging in die transactie uitgevoerd op de BD teruggedraaid
+			
 			$TransCommit = $pdo->prepare("COMMIT"); //blijvend opslaan van data in DB
 			$transStart->execute(); //start transactie
 			$registreerA->execute();//start querry A
@@ -91,7 +91,8 @@ class Registreer {
 		 catch(PDOException $e) //foutmelding als iets niet werkt
 		 {
 			print("Fout:" . $e->getMessage());
-		   $transRolBack->execute(); //rollback uitvoeren
+                    $transRolBack = $pdo->prepare("ROLLBACK"); //als er iets mis gaat in de transactie worden wijziging in die transactie uitgevoerd op de BD teruggedraaid
+		    $transRolBack->execute(); //rollback uitvoeren
 		 }
 	}
 }
