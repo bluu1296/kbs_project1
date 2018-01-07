@@ -85,7 +85,7 @@ class Registreer {
 			$registreerB->execute();//start querry B
 			$TransCommit->execute();//beindig transactie
 			
-			header("Location: /kbs_Project1/index.php");
+			header("Location: ../pages/home.php");
 			die();
 		}
 		 catch(PDOException $e) //foutmelding als iets niet werkt
