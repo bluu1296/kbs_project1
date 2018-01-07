@@ -17,10 +17,9 @@ class Home {
 		require_once './pages/home.php';
 		$this->_other();
 	}
-	protected function _other() {
-		
-		
+
+	public function _other() {
 		
 	}
-	
+
 }
