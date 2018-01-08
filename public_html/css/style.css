@@ -54,3 +54,20 @@ html, body {
 .form-control{
     width: 250%;
 }
+
+.login{
+    padding-top: 100px;
+    margin-left: 20%;
+    margin-right: 10%;
+}
+
+.profiel{
+    padding-top: 300px;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+.regristreren{
+    padding-top: 150px;
+    margin-left: 20%;
+}
