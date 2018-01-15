@@ -16,8 +16,10 @@
             <file>file:/C:/xampp/htdocs/kbs_project1/controller/contactController.php</file>
             <file>file:/C:/xampp/htdocs/kbs_project1/pages/contact.php</file>
             <file>file:/C:/xampp/htdocs/kbs_project1/controller/homeController.php</file>
+            <file>file:/C:/xampp/htdocs/kbs_project1/.htaccess</file>
             <file>file:/C:/xampp/htdocs/kbs_project1/controller/registreerController.php</file>
             <file>file:/C:/xampp/htdocs/kbs_project1/index.php</file>
+            <file>file:/C:/xampp/htdocs/kbs_project1/controller/DB-connectie.php</file>
         </group>
     </open-files>
 </project-private>

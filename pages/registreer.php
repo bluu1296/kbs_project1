@@ -1,11 +1,11 @@
 <div class="container">
     <h2>Aanmaken nieuwe gebruiker</h2>
-    <form action="verwerkaanmaak.php" method="post">
+    <form  method="post">
         <h4>Voornaam</h4>
         <input type="text" name="voornaam" placeholder="Piet" required>
         <h4>Achternaam</h4>
         <input type="text" name="achternaam" placeholder="Hendriks" required>
-        <h4>E-mail addres</h4>
+        <h4>E-mail adres</h4>
         <input type="email" name="E-mail" placeholder="iemand@example.com" required autofocus> 
         <h4>Wachtwoord</h4>
         <input type="password" name="wachtwoord" placeholder="Wachtwoord" required> 
@@ -23,6 +23,6 @@
         <input type="text" name="Plaatsnaam" placeholder="Zwolle" required>
         <h4> postcode </h4> 
         <input type="text" name="postcode" placeholder="1234AB" required><br>
-        <input type="submit" value="Account aanmaken">
+        <input type="submit" value="Registreren">
     </form>
 </div>
