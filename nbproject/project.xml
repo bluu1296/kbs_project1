@@ -3,7 +3,11 @@
     <type>org.netbeans.modules.php.project</type>
     <configuration>
         <data xmlns="http://www.netbeans.org/ns/php-project/1">
-            <name>kbsProject1</name>
+            <name>kbs_Project1</name>
         </data>
+        <spellchecker-wordlist xmlns="http://www.netbeans.org/ns/spellchecker-wordlist/1">
+            <word>maken</word>
+            <word>problemen</word>
+        </spellchecker-wordlist>
     </configuration>
 </project>
