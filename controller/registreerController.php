@@ -38,7 +38,8 @@ class Registreer {
 		$standaardRol = '0';
 		//wachtoord validatie op hoofdletter cijfer speciaal teken en minimaal 8 letters.
 		
-		if(isset($_POST['wachtwoord'])) {
+		if(isset($wachtwoord)) {
+			
 			if(strlen($wachtwoord) < '8') {
 				$wachtwoordError = "Zorg dat uw wachtwoord minstens 8 tekens bevat.";
 				exit($wachtwoordError);
