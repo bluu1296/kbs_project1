@@ -38,6 +38,6 @@ class Contact {
     				echo "We hebben uw bericht ontvangen " . $first_name . ". Er wordt spoedig mogelijk contact opgenomen.";
     }
 	}
-	}
-	
 }
+	
+
