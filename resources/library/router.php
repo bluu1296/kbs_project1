@@ -9,7 +9,7 @@
 /**
  * Description of router
  *
- * @author binh_
+ * @author Shadowwolf97
  */
 class Router {
 	
@@ -35,6 +35,7 @@ class Router {
 					$useMethod = $this->_method[$key];
 					new $useMethod;	
 				} else {
+//					doet basically niks...
 					call_user_func($this->_method[$key]);
 				}
 				
