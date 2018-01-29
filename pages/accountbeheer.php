@@ -1,4 +1,4 @@
-<form action="./controller/accountbeheer.php" method="post">
+<form action="./controller/accountbeheerController.php" method="post">
     Voornaam<input type="text" name="voornaam"><br>
     Achternaam<input type="text" name="achternaam"><br>
     E-Mail<input type="email" name="email"><br>

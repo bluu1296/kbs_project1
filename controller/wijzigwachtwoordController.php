@@ -24,7 +24,7 @@ class wijzigWachtwoord {
 
 
 
-        $resultaat = $pdo->prepare('SELECT wachtwoord FROM gebruiker WHERE email="' . $email . '"');
+        $resultaat = $pdo->prepare('SELECT wachtwoord FROM gebruiker WHERE email="' . $_SESSION[$email] . '"');
         $resultaat->execute();
         $wachtwoordverify = $resultaat->fetch();
 
