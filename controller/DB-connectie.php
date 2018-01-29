@@ -4,7 +4,7 @@ try{
 $user = "root";
 $pass = "";
 $pdo = new PDO($db, $user, $pass); 
-} catch (Exception $ex) {
+} catch (Exception $e) {
     print("Fout:" . $e->getMessage());
 }
 ?>
