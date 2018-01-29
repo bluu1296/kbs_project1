@@ -44,7 +44,7 @@ class Login {
 				$_session[id] = $email;
 				header("Location: index.php");
 			} else {
-				echo 'Login failed';
+				print("Gebruikersnaam en/of wachtwoord is onjuist.");
 			}
 		}
     }
