@@ -19,7 +19,8 @@ class Home {
 	}
 
 	public function _other() {
-		
+            
+            print_r($_SESSION);
 	}
 
 }
