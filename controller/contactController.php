@@ -32,11 +32,6 @@ class Contact {
 		
 		if(isset($subject)==true){
 			
-//    			$from = ($_POST['email']); 
-//    			$first_name = $_POST['first_name'];
-//    			$last_name = $_POST['last_name'];
-//    			$telnummer = $_POST['telnummer'];
-//    			$subject = "subject";
     			$subject2 = "Kopie van uw bericht";
     			$message =  "Gegevens" . "\n\n" . "\n" . "Naam: " . $name . "\n" . "\n" . "Telefoonnummer: " . $telnummer . "\n" . "Email: " . $email . " schreef het volgende:" . "\n\n" . $bericht;
     			$message2 = "Bijgaand ontvangt u een kopie van uw bericht " . $name . "\n\n" . $bericht;
@@ -46,7 +41,9 @@ class Contact {
     			mail($email,$subject2,$message2,$headers2);
 				
     				echo "We hebben uw bericht ontvangen " . $name . ". Er wordt spoedig mogelijk contact opgenomen.";
-    }
+		} else {
+			Echo 'Er is iets misgegaan';
+		}
 	
 	}
 	
