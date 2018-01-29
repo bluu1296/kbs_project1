@@ -40,7 +40,8 @@ class Login {
 		
         if(isset($_POST['email'])) {
 			if (password_verify($wachtwoord, $wachtwoordverify[0]) == TRUE) { //verifieerd wachtwoord met de hash uit de DB
-				session_start($email);
+				session_start();
+				$_session[id] = "$email";
 				header("Location: index.php");
 			} else {
 				echo 'Login failed';
