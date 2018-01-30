@@ -39,5 +39,6 @@ class Contact {
                 echo "We hebben uw bericht ontvangen " . $name . ". Er wordt spoedig mogelijk contact opgenomen.";
             }
 	}
-        
 }
+	
+
