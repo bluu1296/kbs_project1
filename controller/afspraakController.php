@@ -34,7 +34,7 @@ class Afspraak {
             $eindtijd = date('Y-m-d H:i:s', strtotime($etijd));
             
             
-            var_dump($begintijd);
+            
             
             try{ //'try' zodat er foutmelding gegeven wordt als het niet lukt met de catch
                 $transStart = $pdo->prepare("START TRANSACTION"); //start transactie
