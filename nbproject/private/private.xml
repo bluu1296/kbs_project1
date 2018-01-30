@@ -8,6 +8,11 @@
             <file>file:/C:/xampp/htdocs/kbs_project1/resources/library/router.php</file>
             <file>file:/C:/xampp/htdocs/kbs_project1/controller/registreerController.php</file>
             <file>file:/C:/xampp/htdocs/kbs_project1/controller/DB-connectie.php</file>
+            <file>file:/C:/XAMPP/htdocs/KBS1/kbs_project1/pages/contact.php</file>
+            <file>file:/C:/XAMPP/htdocs/KBS1/kbs_project1/controller/contactController.php</file>
+            <file>file:/C:/XAMPP/htdocs/KBS1/kbs_project1/pages/registreer.php</file>
+            <file>file:/C:/XAMPP/htdocs/KBS1/kbs_project1/pages/login.php</file>
+            <file>file:/C:/XAMPP/htdocs/KBS1/kbs_project1/pages/afspraak.php</file>
         </group>
     </open-files>
 </project-private>

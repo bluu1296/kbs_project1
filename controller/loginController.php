@@ -40,8 +40,10 @@ class Login {
 		
         if(isset($_POST['email'])) {
 			if (password_verify($wachtwoord, $wachtwoordverify[0]) == TRUE) { //verifieerd wachtwoord met de hash uit de DB
-				session_start();
-				$_session[id] = $email;
+                                $_SESSION['logged_in'] = true;
+				$_SESSION['id'] = $email;
+                                $_SESSION['rol'] = 0;
+                                
 				header("Location: index.php");
 			} else {
 				print("Gebruikersnaam en/of wachtwoord is onjuist.");
